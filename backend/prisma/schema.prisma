@@ -1,0 +1,218 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id             String    @id @default(cuid())
+  name           String?
+  email          String?   @unique
+  image          String?
+  dateOfCreation DateTime  @default(now())
+  isModerator    Boolean   @default(false)
+  isAdmin        Boolean   @default(false)
+  banCount       Int       @default(0)
+  reportedCount  Int       @default(0)
+  //unnecessary fields imo -Ritvik
+  //  isBanned      Boolean   @default(false)
+  //  isDeleted     Boolean   @default(false)
+  //  isAcceptedTerms Boolean  @default(false)
+  //    image         String?   @db.Blob
+  //if its for the auth stuff else screw it XD
+  emailVerified  DateTime?
+
+  accounts               Account[]
+  sessions               Session[]
+  questions              Thread[]
+  answers                Answer[]
+  reply                  Reply[]
+  admin                  Admin[]
+  moderator              Moderator[]
+  userspermanentlybanned UsersPermanentlyBanned[]
+  reporter               Reports[]                @relation(name: "reporterUserID")
+  reported               Reports[]                @relation(name: "reportedUserID")
+  permanentbanrequests   PermanentBanRequests[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Thread {
+  threadID    String   @id @default(cuid())
+  subject     String
+  content     String
+  upvotes     Int      @default(0)
+  reportCount Int      @default(0)
+  isBanned    Boolean  @default(false)
+  isPosted    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  id   String
+  user User   @relation(fields: [id], references: [id])
+
+  answers              Answer[]
+  reply                Reply[]
+  reports              Reports[]
+  permanentbanrequests PermanentBanRequests[]
+}
+
+model Answer {
+  answerID      String   @id @default(cuid())
+  subject       String
+  content       String
+  reportedCount Int      @default(0)
+  upVotes       Int      @default(0)
+  isApproved    Boolean  @default(false)
+  isBanned      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  id   String
+  user User   @relation(fields: [id], references: [id])
+
+  threadID String
+  question Thread @relation(fields: [threadID], references: [threadID])
+
+  reports              Reports[]
+  permanentbanrequests PermanentBanRequests[]
+  reply                Reply[]
+}
+
+model Reply {
+  replyID          String   @id @default(cuid())
+  content          String
+  reportCount      Int      @default(0)
+  isBanned         Boolean  @default(false)
+  createdTimeStamp DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  id   String
+  user User   @relation(fields: [id], references: [id])
+
+  answerID String
+  answer   Answer @relation(fields: [answerID], references: [answerID])
+
+  threadID String
+  question Thread @relation(fields: [threadID], references: [threadID])
+
+  reports              Reports[]
+  permanentbanrequests PermanentBanRequests[]
+}
+
+model Reports {
+  reportID   String @id @default(cuid())
+  idReporter String
+  reporter   User   @relation(name: "reporterUserID", fields: [idReporter], references: [id])
+
+  idReported String
+  reported   User   @relation(name: "reportedUserID", fields: [idReported], references: [id])
+
+  answerID String
+  answer   Answer @relation(fields: [answerID], references: [answerID])
+
+  threadID String
+  question Thread @relation(fields: [threadID], references: [threadID])
+
+  replyID String
+  reply   Reply  @relation(fields: [replyID], references: [replyID])
+}
+
+model Admin {
+  adminID String @id @default(cuid())
+
+  id   String
+  user User   @relation(fields: [id], references: [id])
+
+  permanentbanrequests   PermanentBanRequests[]
+  userspermanentlybanned UsersPermanentlyBanned[]
+}
+
+model Moderator {
+  moderatorID String @id @default(cuid())
+  id          String
+  user        User   @relation(fields: [id], references: [id])
+
+  permanentbanrequests PermanentBanRequests[]
+}
+
+enum Status {
+  Temporary
+  PermanentlyBanned
+  Requested
+}
+
+model PermanentBanRequests {
+  permanentBanRequestsID String @id @default(cuid())
+  tempBanCount           Int    @default(0)
+  requestStatus Status @default(Temporary)
+
+  id   String
+  user User   @relation(fields: [id], references: [id])
+
+  adminID String
+  admin   Admin  @relation(fields: [adminID], references: [adminID])
+
+  moderatorID String
+  moderator   Moderator @relation(fields: [moderatorID], references: [moderatorID])
+
+  answerID String
+  answer   Answer @relation(fields: [answerID], references: [answerID])
+
+  threadID String
+  question Thread @relation(fields: [threadID], references: [threadID])
+
+  replyID String
+  reply   Reply  @relation(fields: [replyID], references: [replyID])
+}
+
+model UsersPermanentlyBanned {
+  usersPermanentlyBannedID String   @id @default(cuid())
+  isModerater              Boolean  @default(false)
+  timeStamp                DateTime @default(now())
+
+  id   String
+  user User   @relation(fields: [id], references: [id])
+
+  adminID String
+  admin   Admin  @relation(fields: [adminID], references: [adminID])
+}
