@@ -3,7 +3,7 @@ import { FC } from "react";
 const Header: FC = () => {
     return (
         <div className="flex justify-between py-5 items-center">
-            <h1 className="text-4xl font-bold font-poppins">huddl</h1>
+            <h1 className="text-4xl font-semibold font-poppins">huddl</h1>
             <input
                 type="text"
                 className="w-1/3 rounded-md p-1 px-3 placeholder:text-bold placeholder-gray-500"

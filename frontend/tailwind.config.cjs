@@ -12,6 +12,8 @@ module.exports = {
         fontFamily: {
             dm: ["DM Sans", ...defaultTheme.fontFamily.serif],
             poppins: ["Poppins", ...defaultTheme.fontFamily.serif],
+            sans: ["sans - serif", ...defaultTheme.fontFamily.sans],
+            serif: ["serif", ...defaultTheme.fontFamily.serif],
         },
         extend: {},
     },
