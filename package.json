@@ -1,0 +1,12 @@
+{
+    "name": "huddl",
+    "version": "1.0.0",
+    "repository": "https://github.com/huddl-it/huddl.it.git",
+    "author": "Jaideep <guntupallijaideep@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "workspaces": [
+        "frontend",
+        "backend"
+    ]
+}
