@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 body {
-    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    /* background-image: linear-gradient(120deg, #344139 0%, #7ca0b2 100%); */
+    background-image: url("./assets/floss.png");
 
     font-family: "DM Sans", sans-serif;
     /* font-weight: 600;
