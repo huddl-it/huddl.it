@@ -16,3 +16,18 @@ body {
     padding: 24px;
     border-bottom: 1px solid rgba(255,255,255,0.1); */
 }
+
+.navitem {
+    border-bottom-width: 0;
+    background-image: linear-gradient(transparent, transparent),
+        linear-gradient(rgb(124, 36, 206), rgb(124, 36, 206));
+    background-size: 0 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease-in-out;
+}
+
+.navitem:hover {
+    background-size: 100% 2px;
+    background-position: 0 100%;
+}

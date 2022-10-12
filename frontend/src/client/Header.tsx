@@ -2,18 +2,18 @@ import { FC } from "react";
 
 const Header: FC = () => {
     return (
-        <div className="flex justify-between py-5 items-center">
+        <div className="flex justify-between py-8 items-center">
             <h1 className="text-4xl font-semibold font-poppins">huddl</h1>
             <input
                 type="text"
-                className="w-1/3 rounded-md p-1 px-3 placeholder:text-bold placeholder-gray-500"
+                className="w-1/3 rounded-md p-1 py-2 px-3 placeholder:text-bold placeholder-gray-500 focus:shadow-2xl focus:outline-purple-700"
                 placeholder="Have a Question?"
             />
             <div className="flex gap-10">
                 <a href="#">
                     <a
                         href=""
-                        className="text-gray-500 hover:underline hover:text-gray-700"
+                        className="text-gray-700 hover:underline hover:text-purple-700 navitem"
                     >
                         Explore
                     </a>
@@ -21,7 +21,7 @@ const Header: FC = () => {
                 <a href="#">
                     <a
                         href=""
-                        className="text-gray-500 hover:underline hover:text-gray-700"
+                        className="text-gray-700 hover:underline hover:text-purple-700 navitem"
                     >
                         Questions
                     </a>
@@ -29,7 +29,7 @@ const Header: FC = () => {
                 <a href="#">
                     <a
                         href=""
-                        className="text-gray-500 hover:underline hover:text-gray-700"
+                        className="text-gray-700 hover:underline hover:text-purple-700 navitem"
                     >
                         Experiences
                     </a>
@@ -43,13 +43,6 @@ const Header: FC = () => {
                     width={25}
                     height={25}
                 />
-                <a href="/profile">
-                    {/* <img
-                        src={session.user.image}
-                        alt={session.user.name}
-                        className="w-9 h-9 rounded-full"
-                    /> */}
-                </a>
             </div>
         </div>
     );
