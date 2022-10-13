@@ -4,7 +4,10 @@ const Footer: FC = () => {
     return (
         <footer className="text-gray-800 flex justify-between px-2 pb-12 pt-8">
             <div className="w-1/3 flex flex-col gap-2">
-                <h1 className="text-5xl font-semibold font-poppins">huddl</h1>
+            
+
+                
+                <img src="./src/assets/iter.png" alt=""  className="ml-0 pl-0 w-20" />
                 <p className="text-black/75">
                     huddl, a IIITD Forum is a platform for students to share
                     their knowledge, experience and ask questions about the
