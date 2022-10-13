@@ -3,7 +3,8 @@ import { FC } from "react";
 const Header: FC = () => {
     return (
         <div className="flex justify-between py-8 items-center">
-            <h1 className="text-4xl font-semibold font-poppins">huddl</h1>
+            <img src="./src/assets/iter.png" alt=""  className="mr-0 pr-0 h-10 align-top" />
+            
             <input
                 type="text"
                 className="w-1/3 rounded-md p-1 py-2 px-3 placeholder:text-bold placeholder-gray-500 focus:shadow-2xl focus:outline-purple-700"
