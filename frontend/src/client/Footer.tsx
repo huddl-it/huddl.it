@@ -13,7 +13,7 @@ const Footer: FC = () => {
                     their knowledge, experience and ask questions about the
                     IIITD.
                 </p>
-                <p className="text-gray-500 font-medium text-sm">
+                <p className="text-black font-medium text-sm opacity-60">
                     © 2022 huddl. All Rights Reserved
                 </p>
             </div>
@@ -23,7 +23,7 @@ const Footer: FC = () => {
                     <a href="#">
                         <a
                             href=""
-                            className="text-gray-500 hover:underline hover:text-gray-700"
+                            className="bg_slider text-gray-500  hover:text-white hover:font-semibold "
                         >
                             Questions
                         </a>
@@ -31,7 +31,7 @@ const Footer: FC = () => {
                     <a href="#">
                         <a
                             href=""
-                            className="text-gray-500 hover:underline hover:text-gray-700"
+                            className="text-gray-500  hover:text-white hover:font-semibold"
                         >
                             Experiences
                         </a>
@@ -39,7 +39,7 @@ const Footer: FC = () => {
                     <a href="#">
                         <a
                             href=""
-                            className="text-gray-500 hover:underline hover:text-gray-700"
+                            className="text-gray-500  hover:text-white hover:font-semibold"
                         >
                             About
                         </a>
@@ -47,7 +47,7 @@ const Footer: FC = () => {
                     <a href="#">
                         <a
                             href=""
-                            className="text-gray-500 hover:underline hover:text-gray-700"
+                            className="text-gray-500  hover:text-white hover:font-semibold"
                         >
                             Contact us
                         </a>
@@ -58,7 +58,7 @@ const Footer: FC = () => {
                     <a href="#">
                         <a
                             href=""
-                            className="text-gray-500 hover:underline hover:text-gray-700"
+                            className="text-gray-500  hover:text-white hover:font-semibold"
                         >
                             Support Us
                         </a>
@@ -66,7 +66,7 @@ const Footer: FC = () => {
                     <a href="#">
                         <a
                             href=""
-                            className="text-gray-500 hover:underline hover:text-gray-700"
+                            className="text-gray-500  hover:text-white hover:font-semibold"
                         >
                             Contribute
                         </a>
@@ -77,7 +77,7 @@ const Footer: FC = () => {
                     <a href="#">
                         <a
                             href=""
-                            className="text-gray-500 hover:underline hover:text-gray-700"
+                            className="text-gray-500  hover:text-white hover:font-semibold"
                         >
                             aedIn
                         </a>
@@ -85,7 +85,7 @@ const Footer: FC = () => {
                     <a href="#">
                         <a
                             href=""
-                            className="text-gray-500 hover:underline hover:text-gray-700"
+                            className="text-gray-500  hover:text-white hover:font-semibold"
                         >
                             Twitter
                         </a>
@@ -93,7 +93,7 @@ const Footer: FC = () => {
                     <a href="#">
                         <a
                             href=""
-                            className="text-gray-500 hover:underline hover:text-gray-700"
+                            className="text-gray-500  hover:text-white hover:font-semibold"
                         >
                             Instagram
                         </a>
@@ -101,7 +101,7 @@ const Footer: FC = () => {
                     <a href="#">
                         <a
                             href=""
-                            className="text-gray-500 hover:underline hover:text-gray-700"
+                            className="text-gray-500  hover:text-white hover:font-semibold"
                         >
                             Blog
                         </a>
