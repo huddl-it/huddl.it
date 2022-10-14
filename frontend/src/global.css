@@ -32,3 +32,12 @@ body {
     background-position: 0 100%;
 }
 
+.bell{
+    border-radius: 50%;
+    margin: 0px;
+    padding: 0px;
+    transition: transform .2s;
+}
+.bell:hover{
+    transform: scale(1.2);
+}
